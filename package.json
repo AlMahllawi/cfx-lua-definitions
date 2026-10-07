@@ -1,0 +1,81 @@
+{
+  "name": "cfx-lua-definitions",
+  "displayName": "CFX Lua Definitions",
+  "publisher": "AlMahllawi",
+  "description": "Automate .d.lua generation for CFX resources",
+  "version": "1.0.0",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlMahllawi/cfx-lua-definitions.git"
+  },
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "cfx",
+    "fivem",
+    "rdr2",
+    "lua",
+    "generator",
+    "definitions",
+    "def",
+    "d.lua"
+  ],
+  "activationEvents": [
+    "workspaceContains:fxmanifest.lua",
+    "workspaceContains:__resource.lua"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cfx.generateDefinitions",
+        "title": "CFX: Generate Lua Definitions"
+      },
+      {
+        "command": "cfx.changeResourceName",
+        "title": "CFX: Change Resource Name for Definitions"
+      },
+      {
+        "command": "cfx.changeOutputDir",
+        "title": "CFX: Change Output Directory for Definitions"
+      },
+      {
+        "command": "cfx.showConfigurationMenu",
+        "title": "CFX: Configure Lua Definitions"
+      },
+      {
+        "command": "cfx.syncDefinitions",
+        "title": "CFX: Sync Lua Definitions"
+      }
+    ],
+    "configuration": {
+      "title": "CFX Lua Definitions",
+      "properties": {
+        "cfxLuaDefinitions.generateOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically generate definitions when saving fxmanifest.lua or __resource.lua."
+        }
+      }
+    }
+  },
+  "extensionDependencies": [
+    "sumneko.lua"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^5.0.0"
+  }
+}
